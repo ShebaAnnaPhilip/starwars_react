@@ -1,12 +1,18 @@
-import React from 'react';
-import './Card.css';
+import React from "react";
+import "./Card.css";
 
-export default function Card({people}) {
-    return (
-        <div className="Card">
-           <p>{people.name}</p> 
-           <p>{people.height}</p> 
-           <p>{people.hair_color}</p>
-        </div>
-    )
+export default function Card({ data, onClickDetails }) {
+  return (
+      <div className="cards-main">
+<div className="card">
+      <div className="card-heading">
+        <p>{data.name}</p>
+        <p>{`${data.height} cm height`} </p>
+      </div>
+
+      <div className="card-details">{<a onClick={onClickDetails}>&gt;</a>}</div>
+    </div>
+      </div>
+    
+  );
 }

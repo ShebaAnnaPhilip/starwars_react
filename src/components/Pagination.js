@@ -1,4 +1,5 @@
 import React from "react";
+import "./Pagination.css"
 
 export default function Pagination(props) {
   const previousPage = () => {
@@ -9,9 +10,9 @@ export default function Pagination(props) {
     props.next();
   };
   return (
-    <div>
-      <button onClick={previousPage}>Previous</button>
-      <button onClick={nextPage}>Next</button>
+    <div className="pagination">
+      <button className="pagination-btn" onClick={previousPage}>Previous</button>
+      <button className="pagination-btn" onClick={nextPage}>Next</button>
     </div>
   );
 }

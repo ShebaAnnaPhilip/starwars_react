@@ -39,6 +39,11 @@ export default function People() {
     setLoading(false);
   };
 
+  const handleClickDetails = ()=> {
+   
+
+  }
+
 
   return (
     <div>
@@ -49,7 +54,8 @@ export default function People() {
         <>
           <div>
               {peopleData.map((people, i)=>{
-                  return <Card key={i} people={people}/>
+                  return <Card key={i} data={people} 
+                  onClickDetails={handleClickDetails}/>
               })}
           </div>
         </>

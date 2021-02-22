@@ -1,7 +1,24 @@
-.Card {
+.cards-main{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: darkgray;
+}
+.card {
+    background-color: black;
+    width:50%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    color: aliceblue;
+    margin: 10px;
+}
+.card-heading{
+    width: 40%;
 
-    background-color: aquamarine;
-    width: 25%;
-    height: 25%;
-
+}
+.card-details {
+    width: 10%;
+    padding-left: 20px;
+    padding-top: 40px;
 }

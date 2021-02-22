@@ -4,6 +4,7 @@ import People from './containers/People';
 import Planets from './containers/Planets';
 import Starships from './containers/Starships';
 import Home from './containers/Home';
+import Header from './containers/Header';
 
 function App() {
   return (
@@ -11,12 +12,15 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/people">
+            <Header />
             <People />
           </Route>
           <Route path="/planets">
+            <Header />
             <Planets />
           </Route>
           <Route path="/starships">
+            <Header />
             <Starships />
           </Route>
           <Route path="/">

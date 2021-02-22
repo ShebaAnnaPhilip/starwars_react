@@ -1,0 +1,12 @@
+.pagination {
+    background-color: #FFD700;
+    width: 100%;
+}
+.pagination-btn {
+    height: 30px;
+    width: 120px;
+    background-color: black;
+    color: white;
+    margin: 10px;
+
+}
