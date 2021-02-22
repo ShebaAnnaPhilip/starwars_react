@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Card from "../components/Card";
+import Pagination from "../components/Pagination";
 import { API_URL_PEOPLE } from "../constants";
 import { getAllData } from "../utils";
 
@@ -20,9 +21,28 @@ export default function People() {
     fetchPeopleData();
   }, []);
 
+  const next = async () => {
+    setLoading(true);
+    let data = await getAllData(nextUrl);
+    setPeopleData(data.results);
+    setNextUrl(data.next);
+    setPrevUrl(data.previous);
+    setLoading(false);
+  };
+  const prev = async () => {
+    if (!prevUrl) return;
+    setLoading(true);
+    let data = await getAllData(prevUrl);
+    setPeopleData(data.results);
+    setNextUrl(data.next);
+    setPrevUrl(data.previous);
+    setLoading(false);
+  };
+
 
   return (
     <div>
+      <Pagination prev={prev} next={next}/>
       {loading ? (
         <h1>Loading .....</h1>
       ) : (
