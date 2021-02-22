@@ -16,7 +16,6 @@ export default function People() {
   useEffect(() => {
     async function fetchPeopleData() {
       let response = await getAllData(API_URL_PEOPLE);
-      console.log(response);
       setPeopleData(response.results);
       setNextUrl(response.next);
       setPrevUrl(response.previous);
@@ -62,8 +61,14 @@ export default function People() {
 
   return (
     <div>
-      <Header back={goBack} showIcon={showDetails}/>
-      {!showDetails &&<Pagination prev={prev} next={next} />}
+      <Header back={goBack} showIcon={showDetails} name="People"/>
+      {!showDetails &&
+      <>
+      <Pagination prev={prev} next={next} disablePrev={!prevUrl} disableNext={!nextUrl}/>
+      <h2>PEOPLE</h2>
+      </>
+      }
+      
       {loading ? (
         <h1>Loading .....</h1>
       ) : (
@@ -76,7 +81,6 @@ export default function People() {
                     key={i}
                     data={person}
                     topLabel={person.name}
-                    bottomLabel={`${person.height} cm height`}
                     onClickDetails={()=>handleClickDetails(person)}
                   />
                 );

@@ -5,8 +5,12 @@
 .pagination-btn {
     height: 30px;
     width: 120px;
-    background-color: black;
     color: white;
     margin: 10px;
     cursor: pointer;
+    background-color: black;
+}
+.pagination-btn:disabled{
+    background-color: lightgray;
+    cursor: default;
 }

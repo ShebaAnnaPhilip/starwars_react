@@ -1,22 +1,40 @@
 import React from "react";
 import "./Card.css";
-import showMore from '../images/showMore.png';
+import showMore from "../images/showMore.png";
+import FilmCard from "./FilmCard";
 
-
-export default function Card({topLabel,bottomLabel, onClickDetails }) {
-    const showDetails = typeof(onClickDetails) === 'function';
+export default function Card({
+  topLabel,
+  bottomLabel,
+  onClickDetails,
+  filmList,
+}) {
+  const showDetails = typeof onClickDetails === "function";
+  console.log(filmList);
   return (
     <div className="cards-main">
-      <div className="card">
-        <div className="card-heading">
-          <h3 onClick={onClickDetails}>{topLabel}</h3>
-          <p>{bottomLabel}</p>
-        </div>
+      {!(filmList && filmList.length > 0) && (
+        <div className="card">
+          <div className="card-heading">
+            <p className="top-label">{topLabel}</p>
+            <p className="bottom-label">{bottomLabel}</p>
+          </div>
 
-        <div className="card-details">
-          {showDetails && <img className="show-details-img"src={showMore} alt="Back" onClick={onClickDetails}/>}
+          <div className="card-details">
+            {showDetails && (
+              <img
+                className="show-details-img"
+                src={showMore}
+                alt="Show Details"
+                onClick={onClickDetails}
+              />
+            )}
+          </div>
         </div>
-      </div>
+      )}
+      {filmList?filmList.length>0 &&<div className="film-card">
+       <FilmCard filmList = {filmList}/>
+      </div>:''}
     </div>
   );
 }

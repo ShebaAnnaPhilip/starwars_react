@@ -16,7 +16,6 @@ export default function Planets() {
   useEffect(() => {
     async function fetchPlanetsData() {
       let response = await getAllData(API_URL_PLANETS);
-      console.log(response);
       setPlanetData(response.results);
       setNextUrl(response.next);
       setPrevUrl(response.previous);
@@ -47,6 +46,7 @@ export default function Planets() {
   const getPlanetDetails = async (url) => {
     let data = await getAllData(url);
     setPlanetDetails(data);
+    setLoading(false);
   }
 
   const handleClickDetails = (planet)=> {
@@ -61,7 +61,12 @@ export default function Planets() {
   return (
     <div>
       <Header back={goBack} showIcon = {showDetails}/>
-      <Pagination prev={prev} next={next} />
+      {!showDetails &&
+      <>
+      <Pagination prev={prev} next={next} disablePrev={!prevUrl} disableNext={!nextUrl}/>
+      <h2>PLANETS</h2>
+      </>
+      }
       {loading ? (
         <h1>Loading .....</h1>
       ) : (
@@ -73,7 +78,6 @@ export default function Planets() {
                   key={i}
                   data={planet}
                   topLabel={planet.name}
-                  bottomLabel={`${planet.population} people`}
                   onClickDetails={() => handleClickDetails(planet)}
                 />
               );

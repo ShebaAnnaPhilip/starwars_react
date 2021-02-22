@@ -11,8 +11,8 @@ export default function Pagination(props) {
   };
   return (
     <div className="pagination">
-      <button className="pagination-btn" onClick={previousPage}>Previous</button>
-      <button className="pagination-btn" onClick={nextPage}>Next</button>
+      <button disabled={props.disablePrev} className="pagination-btn" onClick={previousPage}>Previous</button>
+      <button disabled={props.disableNext} className="pagination-btn" onClick={nextPage}>Next</button>
     </div>
   );
 }
