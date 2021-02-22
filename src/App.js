@@ -12,15 +12,13 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/people">
-            <Header />
+            {/* <Header /> */}
             <People />
           </Route>
           <Route path="/planets">
-            <Header />
             <Planets />
           </Route>
           <Route path="/starships">
-            <Header />
             <Starships />
           </Route>
           <Route path="/">
